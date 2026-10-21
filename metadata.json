@@ -1,0 +1,6 @@
+{
+  "name": "Cosmic Career AI — Resume Analyzer & Job Matcher",
+  "description": "AI-powered cosmic resume analyzer, career path discovery, and interactive career guide.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
