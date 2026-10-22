@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#03091B] text-[#F4F7FF] selection:bg-[#238BFF]/30 selection:text-[#53D8FF]">
-      {/* Dynamic Cosmic Background */}
+      {/* Dynamic Background */}
       <CosmicBackground />
 
       {/* Main Content Wrapper */}
