@@ -1,13 +1,12 @@
 import React from 'react';
-import { Sparkles, FileSearch, Compass, ArrowRight, Shield, Zap, Target, PenTool } from 'lucide-react';
+import { Sparkles, FileSearch, Compass, ArrowRight, Shield, Zap, Target } from 'lucide-react';
 
 interface HeroProps {
   onAnalyzeClick: () => void;
   onExplorePathsClick: () => void;
-  onBuildResumeClick?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick, onBuildResumeClick }) => {
+export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick }) => {
   return (
     <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -32,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
 
             {/* Supporting Text */}
             <p className="text-lg sm:text-xl text-[#A7B6D4] max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Analyze your resume, discover your strengths, match your dream job, and build the skills your future needs — with AI-powered career guidance and resume editing.
+              Analyze your resume, discover your strengths, match your dream job, and build the skills your future needs — with AI-powered career guidance.
             </p>
 
             {/* Primary & Secondary CTAs */}
@@ -45,16 +44,6 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
                 <span>Analyze My Resume</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
-
-              {onBuildResumeClick && (
-                <button
-                  onClick={onBuildResumeClick}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-[#53D8FF] bg-[#07132E] hover:bg-[#0A1633] border border-[#53D8FF]/40 shadow-[0_0_15px_rgba(83,216,255,0.15)] transition-all duration-200 flex items-center justify-center gap-2"
-                >
-                  <PenTool className="w-4 h-4 text-[#53D8FF]" />
-                  <span>Resume Editor & Builder</span>
-                </button>
-              )}
 
               <button
                 onClick={onExplorePathsClick}
@@ -114,7 +103,6 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
-                  {/* Gradients */}
                   <linearGradient id="beamGradient" x1="200" y1="360" x2="200" y2="60" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stopColor="#238BFF" stopOpacity="0.1" />
                     <stop offset="40%" stopColor="#53D8FF" stopOpacity="0.4" />
@@ -125,26 +113,18 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
                     <stop offset="40%" stopColor="#238BFF" stopOpacity="0.6" />
                     <stop offset="100%" stopColor="#238BFF" stopOpacity="0" />
                   </radialGradient>
-                  <radialGradient id="centerNebula" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#7657FF" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#07132E" stopOpacity="0" />
-                  </radialGradient>
                 </defs>
 
-                {/* Sky & Orbit Rings */}
                 <circle cx="200" cy="180" r="140" stroke="#238BFF" strokeWidth="0.7" strokeDasharray="3 4" opacity="0.3" />
                 <circle cx="200" cy="180" r="95" stroke="#53D8FF" strokeWidth="0.8" strokeDasharray="5 5" opacity="0.4" />
                 <circle cx="200" cy="180" r="50" stroke="#7657FF" strokeWidth="1" opacity="0.5" />
 
-                {/* Glowing Career Pathway Beams leading up */}
                 <path d="M 200 340 L 120 180 L 150 90 L 200 60 L 260 90 L 280 180 Z" stroke="url(#beamGradient)" strokeWidth="1.5" strokeDasharray="4 2" />
                 <line x1="200" y1="340" x2="200" y2="60" stroke="#53D8FF" strokeWidth="1.5" opacity="0.6" />
                 <line x1="200" y1="340" x2="120" y2="180" stroke="#238BFF" strokeWidth="1.2" opacity="0.5" />
                 <line x1="200" y1="340" x2="280" y2="180" stroke="#7657FF" strokeWidth="1.2" opacity="0.5" />
 
-                {/* Constellation Star Nodes (Career Horizons) */}
-                {/* Node: AI Engineering */}
-                <g className="cursor-pointer">
+                <g>
                   <circle cx="200" cy="60" r="16" fill="url(#starGlow)" />
                   <circle cx="200" cy="60" r="6" fill="#F4F7FF" />
                   <text x="200" y="38" textAnchor="middle" fill="#53D8FF" fontSize="11" fontWeight="600" letterSpacing="0.5">
@@ -152,7 +132,6 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
                   </text>
                 </g>
 
-                {/* Node: Architecture */}
                 <g>
                   <circle cx="150" cy="90" r="12" fill="url(#starGlow)" opacity="0.7" />
                   <circle cx="150" cy="90" r="4.5" fill="#F4F7FF" />
@@ -161,7 +140,6 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
                   </text>
                 </g>
 
-                {/* Node: Strategic Leadership */}
                 <g>
                   <circle cx="260" cy="90" r="12" fill="url(#starGlow)" opacity="0.7" />
                   <circle cx="260" cy="90" r="4.5" fill="#F4F7FF" />
@@ -170,7 +148,6 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
                   </text>
                 </g>
 
-                {/* Node: Full Stack */}
                 <g>
                   <circle cx="120" cy="180" r="14" fill="url(#starGlow)" opacity="0.8" />
                   <circle cx="120" cy="180" r="5" fill="#53D8FF" />
@@ -179,7 +156,6 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
                   </text>
                 </g>
 
-                {/* Node: Data Science */}
                 <g>
                   <circle cx="280" cy="180" r="14" fill="url(#starGlow)" opacity="0.8" />
                   <circle cx="280" cy="180" r="5" fill="#7657FF" />
@@ -188,28 +164,20 @@ export const Hero: React.FC<HeroProps> = ({ onAnalyzeClick, onExplorePathsClick,
                   </text>
                 </g>
 
-                {/* Cosmic Stars in Sky */}
                 <circle cx="80" cy="80" r="1.5" fill="#F4F7FF" opacity="0.8" />
                 <circle cx="320" cy="70" r="2" fill="#53D8FF" opacity="0.9" />
                 <circle cx="60" cy="240" r="1.5" fill="#F4F7FF" opacity="0.6" />
                 <circle cx="340" cy="250" r="1.8" fill="#7657FF" opacity="0.8" />
                 <circle cx="210" cy="130" r="2" fill="#53D8FF" opacity="0.9" />
 
-                {/* Silhouette: Stargazer observing constellation on cliff */}
-                {/* Cliff base */}
                 <path d="M 120 400 Q 200 330 280 400 Z" fill="#03091B" stroke="#238BFF" strokeWidth="1" />
                 <path d="M 140 400 L 200 345 L 260 400 Z" fill="#07132E" />
 
-                {/* Person Silhouette standing looking upward */}
-                {/* Body & Coat */}
                 <path d="M 197 344 L 195 330 L 197 318 L 203 318 L 205 330 L 203 344 Z" fill="#F4F7FF" opacity="0.9" />
-                {/* Head looking slightly tilted up */}
                 <circle cx="200" cy="312" r="4.5" fill="#F4F7FF" opacity="0.95" />
-                {/* Light aura around person */}
                 <circle cx="200" cy="326" r="18" fill="url(#starGlow)" opacity="0.3" />
               </svg>
 
-              {/* Floating live badge in illustration */}
               <div className="absolute bottom-4 left-4 right-4 bg-[#0A1633]/90 border border-[#53D8FF]/20 rounded-xl p-3 flex items-center justify-between backdrop-blur-md">
                 <div className="flex items-center gap-2.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />

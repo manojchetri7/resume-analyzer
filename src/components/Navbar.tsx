@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Sparkles, Compass, FileText, Bot, Info, Menu, X, Trash2, ShieldCheck, PenTool } from 'lucide-react';
+import { Sparkles, Compass, FileText, Info, Menu, X, Trash2, ShieldCheck } from 'lucide-react';
 
 interface NavbarProps {
-  activeTab: 'home' | 'analyzer' | 'resume-builder' | 'career-finder' | 'career-guide' | 'about';
-  setActiveTab: (tab: 'home' | 'analyzer' | 'resume-builder' | 'career-finder' | 'career-guide' | 'about') => void;
+  activeTab: 'home' | 'analyzer' | 'career-finder' | 'about';
+  setActiveTab: (tab: 'home' | 'analyzer' | 'career-finder' | 'about') => void;
   onClearSession: () => void;
   hasResumeLoaded: boolean;
   mobileMenuOpen?: boolean;
@@ -25,9 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navItems = [
     { id: 'home', label: 'Home', icon: Sparkles },
     { id: 'analyzer', label: 'Resume Analyzer', icon: FileText },
-    { id: 'resume-builder', label: 'Resume Editor & Builder', icon: PenTool },
     { id: 'career-finder', label: 'Career & Skills Finder', icon: Compass },
-    { id: 'career-guide', label: 'AI Career Guide', icon: Bot },
     { id: 'about', label: 'About', icon: Info },
   ] as const;
 

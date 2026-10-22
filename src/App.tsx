@@ -4,27 +4,18 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ResumeAnalyzer } from './components/ResumeAnalyzer';
 import { CareerFinder } from './components/CareerFinder';
-import { CareerChatbot } from './components/CareerChatbot';
-import { ResumeBuilder } from './components/ResumeBuilder';
 import { AdditionalSections } from './components/AdditionalSections';
 import { Footer } from './components/Footer';
 import { PrivacyModal } from './components/PrivacyModal';
-import { Bot, Sparkles, Shield, Compass, FileText, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Shield, Compass, CheckCircle2 } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'home' | 'analyzer' | 'resume-builder' | 'career-finder' | 'career-guide' | 'about'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'analyzer' | 'career-finder' | 'about'>('home');
   const [sharedResumeText, setSharedResumeText] = useState('');
   const [sharedResumeName, setSharedResumeName] = useState('');
-  const [chatInitialPrompt, setChatInitialPrompt] = useState('');
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  const handleNavigateToGuide = () => {
-    setActiveTab('career-guide');
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -34,19 +25,7 @@ export default function App() {
   const handleClearSession = () => {
     setSharedResumeText('');
     setSharedResumeName('');
-    setChatInitialPrompt('');
     showToast('Session data and resume buffers cleared successfully.');
-  };
-
-  const handleSendToChat = (resumeText: string, contextNote?: string) => {
-    if (resumeText && !sharedResumeText) {
-      setSharedResumeText(resumeText);
-    }
-    if (contextNote) {
-      setChatInitialPrompt(`Here is my resume context: ${contextNote}. Can you give me specific recommendations?`);
-    }
-    setActiveTab('career-guide');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleExploreCareersFromResume = (resumeText: string) => {
@@ -97,21 +76,13 @@ export default function App() {
                   setActiveTab('career-finder');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                onBuildResumeClick={() => {
-                  setActiveTab('resume-builder');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
               />
 
               {/* Inline Resume Analyzer Section */}
               <section id="analyzer-section" className="scroll-mt-24">
                 <ResumeAnalyzer
-                  onSendToChat={handleSendToChat}
+                  onSendToChat={() => {}}
                   onExploreCareers={handleExploreCareersFromResume}
-                  onOpenResumeBuilder={() => {
-                    setActiveTab('resume-builder');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
                   sharedResumeText={sharedResumeText}
                   setSharedResumeText={setSharedResumeText}
                   sharedResumeName={sharedResumeName}
@@ -119,7 +90,7 @@ export default function App() {
                 />
               </section>
 
-              {/* Additional Sections: How it works, Demo Preview, Why Cosmic, Privacy, FAQ */}
+              {/* Additional Sections */}
               <AdditionalSections
                 onStartAnalyze={() => {
                   setActiveTab('analyzer');
@@ -132,12 +103,8 @@ export default function App() {
           {activeTab === 'analyzer' && (
             <div className="space-y-16 animate-in fade-in duration-300">
               <ResumeAnalyzer
-                onSendToChat={handleSendToChat}
+                onSendToChat={() => {}}
                 onExploreCareers={handleExploreCareersFromResume}
-                onOpenResumeBuilder={() => {
-                  setActiveTab('resume-builder');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
                 sharedResumeText={sharedResumeText}
                 setSharedResumeText={setSharedResumeText}
                 sharedResumeName={sharedResumeName}
@@ -149,40 +116,12 @@ export default function App() {
             </div>
           )}
 
-          {activeTab === 'resume-builder' && (
-            <div className="space-y-16 animate-in fade-in duration-300">
-              <ResumeBuilder
-                sharedResumeText={sharedResumeText}
-                sharedResumeName={sharedResumeName}
-                onSendToChat={handleSendToChat}
-                onNavigateToAnalyzer={() => {
-                  setActiveTab('analyzer');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              />
-            </div>
-          )}
-
           {activeTab === 'career-finder' && (
             <div className="space-y-16 animate-in fade-in duration-300">
               <CareerFinder
                 sharedResumeText={sharedResumeText}
                 sharedResumeName={sharedResumeName}
-                onSendToChat={(prompt) => {
-                  setChatInitialPrompt(prompt);
-                  setActiveTab('career-guide');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              />
-            </div>
-          )}
-
-          {activeTab === 'career-guide' && (
-            <div className="space-y-16 animate-in fade-in duration-300">
-              <CareerChatbot
-                sharedResumeText={sharedResumeText}
-                sharedResumeName={sharedResumeName}
-                initialPrompt={chatInitialPrompt}
+                onSendToChat={() => {}}
               />
             </div>
           )}
@@ -251,26 +190,9 @@ export default function App() {
           )}
         </main>
 
-        {/* Floating Guide Button */}
-        {activeTab !== 'career-guide' && (
-          <div className="fixed bottom-6 right-6 z-40">
-            <button
-              onClick={handleNavigateToGuide}
-              className="group flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-gradient-to-r from-[#238BFF] to-[#7657FF] text-white shadow-[0_0_25px_rgba(35,139,255,0.45)] hover:shadow-[0_0_35px_rgba(83,216,255,0.6)] transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#53D8FF]"
-              aria-label="Navigate to AI Career Guide"
-            >
-              <Bot className="w-5 h-5 text-[#53D8FF] transition-transform group-hover:rotate-12" />
-              <span className="text-xs font-semibold">Guide</span>
-              {sharedResumeText && (
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="Resume context connected" />
-              )}
-            </button>
-          </div>
-        )}
-
         {/* Footer */}
         <Footer
-          onNavClick={(tab) => {
+          onNavClick={(tab: any) => {
             setActiveTab(tab);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
