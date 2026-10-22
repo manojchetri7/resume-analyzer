@@ -133,7 +133,7 @@ export default function App() {
                   Our Mission & Methodology
                 </span>
                 <h2 className="font-display text-4xl font-bold text-[#F4F7FF]">
-                  About Cosmic Career AI
+                  About Resume Analyzer AI
                 </h2>
                 <p className="text-[#A7B6D4] text-base leading-relaxed">
                   Bridging the gap between candidate ambitions and actual modern industry demands with transparent, data-driven career intelligence.
@@ -147,7 +147,7 @@ export default function App() {
                     Designed to Counter Superficial ATS Rejections
                   </h3>
                   <p className="text-sm text-[#A7B6D4] leading-relaxed">
-                    Most traditional applicant tracking systems (ATS) rely on crude string matching, rejecting talented applicants simply because a synonym was used. Cosmic Career AI uses Google Gemini to evaluate conceptual depth, transferable technical foundations, and project execution.
+                    Most traditional applicant tracking systems (ATS) rely on crude string matching, rejecting talented applicants simply because a synonym was used. Resume Analyzer AI uses Google Gemini to evaluate conceptual depth, transferable technical foundations, and project execution.
                   </p>
                 </div>
 

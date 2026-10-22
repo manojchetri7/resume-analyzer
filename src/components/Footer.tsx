@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavClick, onOpenPrivacy }) => 
               </div>
             </div>
             <span className="font-display font-bold text-base text-[#F4F7FF]">
-              Cosmic Career <span className="text-[#53D8FF]">AI</span>
+              Resume Analyzer <span className="text-[#53D8FF]">AI</span>
             </span>
           </div>
           <p className="text-xs text-[#A7B6D4] max-w-sm leading-relaxed">
@@ -72,14 +72,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavClick, onOpenPrivacy }) => 
               </button>
             </li>
             <li>
-              <span className="text-slate-500 text-[11px]">support@cosmiccareer.ai</span>
+              <a href="mailto:manojchetri45@gmail.com" className="text-[#53D8FF] hover:underline text-xs">
+                manojchetri45@gmail.com
+              </a>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-[#53D8FF]/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
-        <p>© 2026 Cosmic Career AI. Match scores and roadmaps are algorithmic estimations to aid career preparation.</p>
+        <p>© 2026 Resume Analyzer AI. Match scores and roadmaps are algorithmic estimations to aid career preparation.</p>
         <p>Engineered with Gemini</p>
       </div>
     </footer>
